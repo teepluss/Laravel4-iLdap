@@ -1,0 +1,23 @@
+{
+    "name": "eut/ldap",
+    "description": "",
+    "authors": [
+        {
+            "name": "Teepluss",
+            "email": "admin@laravel.in.th"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Eut\\Ldap": "src/"
+        },
+        "classmap" : [
+            "src/Eut/Ldap/Exceptions.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
