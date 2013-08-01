@@ -1,6 +1,10 @@
 {
     "name": "eut/ldap",
-    "description": "",
+    "description": "Laravel 4 Ldap Authen",
+    "keywords": ["Ldap"],
+    "homepage": "https://github.com/teepluss/Laravel-iLdap",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Teepluss",
