@@ -1,4 +1,4 @@
-<?php namespace Eut\Ldap\Cookie;
+<?php namespace Teepluss\Ldap\Cookie;
 
 use Illuminate\Foundation\Application;
 

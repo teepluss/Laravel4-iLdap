@@ -1,4 +1,4 @@
-<?php namespace Eut\Ldap;
+<?php namespace Teepluss\Ldap;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,7 @@ class LdapServiceProvider extends ServiceProvider {
 
 	public function boot()
 	{
-		$this->package('eut/ldap');
+		$this->package('teepluss/ldap');
 	}
 
 	public function register()
@@ -60,7 +60,7 @@ class LdapServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('cookie', 'ldap');
 	}
 
 }

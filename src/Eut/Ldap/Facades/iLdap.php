@@ -1,4 +1,4 @@
-<?php namespace Eut\Ldap\Facades;
+<?php namespace Teepluss\Ldap\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

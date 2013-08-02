@@ -1,3 +1,3 @@
-<?php namespace Eut\Ldap;
+<?php namespace Teepluss\Ldap;
 
 class UserNotFoundException extends \UnexpectedValueException { }

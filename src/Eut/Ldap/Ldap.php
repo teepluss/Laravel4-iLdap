@@ -1,4 +1,4 @@
-<?php namespace Eut\Ldap;
+<?php namespace Teepluss\Ldap;
 
 class Ldap {
 
@@ -143,6 +143,7 @@ class Ldap {
     public function logout()
     {
         $this->session->forget('credentials');
+
         $this->cookie->forget('credentials');
     }
 
