@@ -17,10 +17,10 @@
     },
     "autoload": {
         "psr-0": {
-            "Eut\\Ldap": "src/"
+            "Teepluss\\Ldap": "src/"
         },
         "classmap" : [
-            "src/Eut/Ldap/Exceptions.php"
+            "src/Teepluss/Ldap/Exceptions.php"
         ]
     },
     "minimum-stability": "dev"
