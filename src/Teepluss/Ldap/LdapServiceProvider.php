@@ -9,29 +9,39 @@ class LdapServiceProvider extends ServiceProvider {
 	 *
 	 * @var bool
 	 */
-	protected $defer = false;
+	protected $defer = true;
 
+	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
 	public function boot()
 	{
 		$this->package('teepluss/ldap');
+
+		$this->registerLdapEvents();
 	}
 
-	public function register()
+	/**
+	 * Register the events needed for authentication.
+	 *
+	 * @return void
+	 */
+	protected function registerLdapEvents()
 	{
-		$this->registerCookie();
-		$this->registerLdap();
-	}
+		$app = $this->app;
 
-	protected function registerCookie()
-	{
-		$this->app['cookie'] = $this->app->share(function($app)
-        {
-            $cookies = new Cookie\NativeCookie($app);
-
-            $config = $app['config']['session'];
-
-            return $cookies->setDefaultPathAndDomain($config['path'], $config['domain']);
-        });
+		$app->after(function($request, $response) use ($app)
+		{
+			if (isset($app['ldap.loaded']))
+			{
+				foreach ($app['ldap']->getQueuedCookies() as $cookie)
+				{
+					$response->headers->setCookie($cookie);
+				}
+			}
+		});
 	}
 
 	/**
@@ -39,10 +49,12 @@ class LdapServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
-	protected function registerLdap()
+	public function register()
 	{
 		$this->app['ldap'] = $this->app->share(function($app)
 		{
+			$app['ldap.loaded'] = true;
+
 			$connection = $app['config']->get('ldap::connections');
 
 			$ldap = new Ldap($app['config'], $app['session'], $app['cookie']);
@@ -60,7 +72,7 @@ class LdapServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('cookie', 'ldap');
+		return array('ldap');
 	}
 
 }
